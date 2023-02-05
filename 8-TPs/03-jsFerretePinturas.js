@@ -51,6 +51,7 @@ function CentigradosFahrenheit ()
    // concatenamos el mensaje
    mensaje = (Centigrados + "Centigrados son:" + Fahrenheit + "Fahrenheit");
    
+   
    alert(mensaje);
 
 

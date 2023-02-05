@@ -99,6 +99,7 @@ function Materiales ()
    
     mensaje = " Se necesitan:" + bolsasCemento + "bolsas de cemento" + bolsasCal + "bolsas de cal";
 
+    
     alert(mensaje);
 
 

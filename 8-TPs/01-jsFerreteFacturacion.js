@@ -99,6 +99,7 @@ function PrecioFinal ()
     precioFinal = sumaPrecios + sumaPrecios * IVA / 100;
 
 
+    
     alert("El precio final mas IVA es:" + precioFinal);
 
 
