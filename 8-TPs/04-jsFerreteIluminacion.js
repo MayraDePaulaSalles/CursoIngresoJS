@@ -10,153 +10,73 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  */
 function CalcularPrecio () 
 {
-    //A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 
-    //declaramos las variables
-    let lamparitas;
-    let precioSinDescuento;
-    let descuento;
-    let marca;
-    let totalPrecioLamparitas;
-    let total;
-    let precioFinal;
-    let mensaje;
-
-    precioSinDescuento = 35;
-    descuento = 50;
-
-    lamparitas = document.getElementById("txtIdCantidad").value;
-    lamparitas = parseInt(lamparitas);
-
-    marca = document.getElementById("Marca").value;
-
-    if(lamparitas >= 6)
-    {
-        totalPrecioLamparitas = precioSinDescuento * lamparitas;
-        //sacamos porcentaje
-        total = totalPrecioLamparitas * descuento / 100;
-        
-        precioFinal = total - descuento;
-
-        mensaje = precioFinal
-        document.getElementById("txtIdprecioDescuento").value = mensaje;
-
-
-    }
-
-    //B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % y si es de otra marca el descuento es del 30%.
-   //declaramos variables
-    let cantLamparitas;
-    let precioSinDesc;
-    let marcaLamparas;
-    let descuentoUno;
-    let descuentoDos;
-    let totalLamparitasPrecio;
-    let totalUno;
-    let precioFinalUno;
-
-    precioSinDesc = 35;
-    descuentoUno = 40;
-    descuentoDos = 30;
-
-    //tomamos por Id y parseamos
-    cantLamparitas = document.getElementById("txtIdCantidad").value;
-    cantLamparitas = parseInt(cantLamparitas);
-
-    marcaLamparas = document.getElementById("Marca").value;
-
-    if(cantLamparitas == 5 && (marcaLamparas == "ArgentinaLuz")){
-
-        //sacamos el total de lamparitas
-        totalLamparitasPrecio = precioSinDesc * cantLamparitas;
-        //sacamos el porcentaje
-        totalUno = totalLamparitasPrecio * descuentoUno / 100;
-
-        precioFinalUno = totalUno - descuentoUno;
-
-        mensaje = precioFinalUno
-        document.getElementById("txtIdprecioDescuento").value = mensaje;
-
-
-    }else{
-        if(cantLamparitas == 5 && (marcaLamparas == "OtraMarca"))
-        //sacamos el total de las lamparitas
-        totalLamparitasPrecio = precioSinDesc * cantLamparitas;
-        //sacamos el porcentaje
-        totalUno = totalLamparitasPrecio * descuentoDos / 100;
-
-        precioFinalUno = totalUno - descuentoDos;
-
-        mensaje = precioFinalUno
-        document.getElementById("txtIdprecioDescuento").value = mensaje
-        
-    }
-
-    //C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
     //declaramos las variables
     let cantLamparas;
-    let precioReal;
-    let marcaLamparitas;
-    let descuentoTres;
-    let descuentoCuatro;
-    let totalLamparasPrecio;
-    let totalDos;
-    let precioFinalDos;
+    let marca;
+    let precioSinDescuento;
+    let porcentaje;
+    let aumento;
+    let precio;
+    let precioDescuento;
+    let precioFinal;
+    let precioImpuesto;
+    let mensaje;
 
-    precioReal = 35;
-    descuentoTres  = 25;
-    descuentoCuatro = 20;
+    //variables fijas
+    precioSinDescuento = 35
+    porcentaje = 0;
+    aumento = 10;
     
-    //tomamos por Id y parseamos
+    //asigno un valor por Id
     cantLamparas = document.getElementById("txtIdCantidad").value;
-    cantLamparas = parseInt(cantLamparas);
+    marca = document.getElementById("Marca").value;
 
-    marcaLamparitas = document.getElementById("Marca").value;
+    //caluculamos el precio inicial
+    precio = cantLamparas * precioSinDescuento;
 
-    if(cantLamparas = 4 && (marcaLamparitas == "ArgentinaLuz" || "FelipeLamparas")){
-
-        //sacamos el total de las lamparitas
-        totalLamparasPrecio = precioReal * cantLamparas;
-        //sacamos el porcentaje
-        totalDos = totalLamparasPrecio * descuentoTres / 100;
-
-        precioFinalDos = totalDos - descuentoTres;
-        
-        mensaje = precioFinalDos;
-        document.getElementById("txtIdprecioDescuento").value = mensaje;
+    //agregamos los porcentajes por medio de IF
+    if(cantLamparas > 5){
+        porcentaje = 50;
+    }else if(cantLamparas == 5){
+        if(marca == "ArgentinaLuz"){
+            porcentaje = 40;
+        }else{
+            porcentaje = 30;
+        }
+    }else if(cantLamparas == 4){
+        if(marca == "ArgentinaLuz" || marca == "FelipeLamparas"){
+            porcentaje = 25;
+        }else{
+            porcentaje = 20;
+        }
+    }else if(cantLamparas == 3){
+        if(marca == "ArgentinaLuz"){
+            porcentaje = 15;
+        }else if(marca == "FelipeLamparas"){
+            porcentaje = 10;
+        }else{
+            porcentaje = 5;
+        }
     }else{
-        if(cantLamparas == 4 && (marcaLamparas == "OtraMarca"))
-        //sacamos el total de lamaparitas
-        totalLamparasPrecio = precioReal * cantLamparas;
-        //sacamos el porcentaje
-        totalDos = totalLamparasPrecio * descuentoCuatro / 100;
+        porcentaje = 0;
+    }  
+    
+    //calculamos el precio final con descuento
+    precioDescuento = precio * porcentaje / 100;
+    precioFinal = precio - precioDescuento;
 
-        precioFinalDos = totalDos - descuentoCuatro;
+    //concatenamos el mensaje para el precio final con descuento
+    mensaje = "$" + precioFinal;
 
-        mensaje = precioFinalDos;
-        document.getElementById("txtIdprecioDescuento").value = mensaje;
-
-
-        
+    //condicion si el precio final supera los $120
+    if(precioFinal >= 120){
+        impuesto = precioFinal * aumento / 100;
+        precioImpuesto = precioFinal + impuesto;
+        alert("Usted pago $" + precioImpuesto + "de IIBB., siendo $" + impuesto + "el impuesto que se pagó")
     }
 
-    //D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
+     //muestro los resultados con descuento
+    document.getElementById("txtIdprecioDescuento").value = mensaje;
 
 
-
-
-
-    
-
-    
-
-
-    
-
-
-
-
-
-
-
- 	
 }
