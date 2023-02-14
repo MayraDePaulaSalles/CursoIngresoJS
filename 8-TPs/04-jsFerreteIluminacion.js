@@ -229,7 +229,7 @@ function CalcularPrecio ()
 
 }*/
 /* 
-TP4 solo SWITCH (cantidad) y con IF (las marcas)*/
+TP4 solo SWITCH (cantidad) y con IF (las marcas)
 function CalcularPrecio ()
 {
     //declaramos las variables
@@ -302,6 +302,104 @@ function CalcularPrecio ()
 
     //muestro los resultados con descuento
     document.getElementById("txtIdprecioDescuento").value = mensaje;
+
+
+}*/
+
+/*TP4 solo SWITCH*/
+function CalcularPrecio ()
+{
+    //declaramos las variables
+    let cantLamparas;
+    let marca;
+    let descuento = 0;
+    let aumento = 10;
+    let precioInicial;
+    let precioDescuento;
+    let precioFinal;
+    let impuesto;
+    let precioImpuesto;
+    let mensaje;
+    const PRECIO = 35;
+    
+    //ingresamos valores por Id
+    cantLamparas = document.getElementById("txtIdCantidad").value;
+    marca = document.getElementById("Marca").value;
+    //parseamos
+    cantLamparas = parseInt(cantLamparas);
+
+    //calculamos el precio inicial
+    precioInicial = cantLamparas * PRECIO;
+
+    if(cantLamparas > 0){
+        switch(cantLamparas)
+        {
+            case 5:
+                switch(marca){
+                    case "ArgentinaLuz": descuento = 40;
+                    break;
+                default: descuento = 30;
+                break;
+                }
+            break;
+            
+            case 4:
+                switch(marca){
+                    case "ArgentinaLuz":
+                    case "FelipeLamparas": descuento = 25;
+                    break;
+                default: descuento = 20;
+                break;
+                }
+            break;
+            
+            case 3:
+                switch(marca){
+                    case "ArgentinaLuz": descuento = 15;
+                    break;
+                    case "FelipeLamparas": descuento = 10;
+                    break;
+                default: descuento = 5;
+                break;
+                }
+            break;
+            
+            case 2:
+                descuento = 0;
+            break;
+            
+            case 1:
+                descuento = 0;
+            break;
+            
+            default:
+                descuento = 50;
+
+            
+        }   
+    }
+
+    //calculamos el precio final con descuento
+    precioDescuento = precioInicial * descuento / 100;
+    precioFinal = precioInicial - descuento;
+
+    //concatenamos el mensaje para el precio final con descuento
+    mensaje = "Precio Final:" + "$" + precioFinal;
+
+    //condicion si el precio final supera los $120
+    if(precioFinal >= 120){
+        impuesto = precioFinal * aumento / 100;
+        precioImpuesto = precioFinal + impuesto;
+        alert("Usted pago $" + precioImpuesto + "de IIBB., siendo $" + impuesto + "el impuesto que se pagó")
+    }
+
+    //muestro los resultados con descuento
+    document.getElementById("txtIdprecioDescuento").value = mensaje;
+
+
+
+   
+ 
 
 
 
