@@ -51,15 +51,15 @@ function mostrar()
 
 	for(let i = 0;              i < 5;            i++)
 	{
-		numero = parseInt(prompt("Ingresar un numero:"));
-		while(isNaN(numero)) //validacion
+		numeroIngresado = parseInt(prompt("Ingresar un numero:"));
+		while(isNaN(numeroIngresado)) //validacion
 		{
-			numero = prompt("Error, ingrese un numero");
-			numero = parseInt(numero);
+			numeroIngresado = prompt("Error, ingrese un numero");
+			numeroIngresado = parseInt(numeroIngresado);
 		}
 		
 		contador = contador + 1;
-		acumulador = acumulador + numero;
+		acumulador = acumulador + numeroIngresado;
 
 	}
 
