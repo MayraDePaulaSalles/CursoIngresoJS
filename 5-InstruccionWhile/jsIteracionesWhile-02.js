@@ -13,7 +13,7 @@ function mostrar()
 	{
 		//mostrar el contador
 		console.log(i);
-	 //modifico la variables
+	 //modifico la variable
 		i = i - 1;
 	}
 
