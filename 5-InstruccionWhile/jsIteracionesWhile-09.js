@@ -1,6 +1,6 @@
 /*
 Al presionar el botón pedir  números  hasta que el usuario quiera,
-mostrar el número máximo y el número mínimo ingresado.*/
+mostrar el número máximo y el número mínimo ingresado.
 function mostrar()
 {	
 	// declarar variables
@@ -49,4 +49,87 @@ function mostrar()
 
 	
 
-}//FIN DE LA FUNCIÓN
+}//FIN DE LA FUNCIÓN*/
+
+/*
+While 9 bis: Al presionar el botón pedir  números  hasta que el usuario quiera,
+mostrar el número máximo y el número mínimo ingresado.
+El menor de los pares y el mayor de los negativos ...(solo si hay)*/
+function mostrar()
+{
+	//declaramos variables
+	let numeroIngresado;
+	let numeroMax;
+	let numeroMin;
+	let minimoPar;
+	let maximoNegativo;
+	let respuesta;
+	let bandera;
+	let banderaNegativos;
+	let banderaPares;
+
+	//inicializamos variables
+	bandera = true;
+	banderaNegativos = true;
+	banderaPares = true;
+	respuesta = 'si';
+
+	while(respuesta == 'si')
+	{
+		numeroIngresado = parseInt(prompt("Ingresar un numero"));
+		while(isNaN(numeroIngresado))
+		{
+			numeroIngresado = parseInt(prompt("Error, ingresar un numero"));
+		}
+		if(bandera == true)//maximos y minimos
+		{
+			numeroMax = numeroIngresado;
+			numeroMin = numeroIngresado;
+			bandera = false;
+		}
+		else if(numeroMax < numeroIngresado)
+		{
+			numeroMax = numeroIngresado;
+		}
+		else if(numeroMin > numeroIngresado)
+		{
+			numeroMin = numeroIngresado;
+		}
+		if(numeroIngresado < 0)//mayor negativos
+		{
+			if(banderaNegativos == true || maximoNegativo < numeroIngresado)
+			{
+				maximoNegativo = numeroIngresado;
+			    banderaNegativos = false;
+			}	
+		}
+		if(numeroIngresado % 2 == 0)//menor pares
+		{
+			if(banderaPares == true || minimoPar > numeroIngresado)
+			{
+				minimoPar = numeroIngresado;
+				banderaPares = false;
+			}
+		}
+		respuesta = prompt("Desea ingresar otro numero: 'si'/'no'");
+		
+	}
+	alert("Entonces no ingrese otro numero");
+
+	document.write("El numero maximo es:" + numeroMax + "<br>");
+	document.write("El numero minimo es:" + numeroMin + "<br>");
+	document.write("El numero menor de los pares es:" + minimoPar + "<br>");
+	document.write("El numero mayor de los negativos es:" + maximoNegativo + "<br>");
+
+
+
+
+
+
+
+
+
+
+
+
+}
