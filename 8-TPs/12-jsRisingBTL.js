@@ -58,7 +58,11 @@ function ComenzarIngreso ()
 		{
 			sueldoBruto = parseInt(prompt("Error el sueldo bruto no debe ser menor a $8000"));
 		}
-									//punto E??????
+		numeroLegajo = parseInt(prompt("Ingrese su numero de legajo:"))
+		while(isNaN(numeroLegajo) || numeroLegajo < 1000 || numeroLegajo > 9999)
+		{
+			numeroLegajo = parseInt(prompt("Error, ingrese su numero de legajo:"))
+		}
 		//ingresamos por prompt y evaluamos la nacionalidad por SWITCH
 		nacionalidad = prompt("Cual es su nacionalidad?");//punto F
 		switch(nacionalidad)
@@ -77,8 +81,13 @@ function ComenzarIngreso ()
 		respuesta = prompt("Desea continuar ingresando datos?: 'si'/'no'");
 
 	}//FIN DEL WHILE
+	
+	document.getElementById("txtIdEdad").value = edadIngresada;
+	document.getElementById("txtIdSexo").value = sexoIngresado;
+	document.getElementById("txtIdEstadoCivil").value = estadoCivilIngresado;
+	document.getElementById("txtIdSueldo").value = sueldoBruto;
+	document.getElementById("txtIdLegajo").value = numeroLegajo;
+	document.getElementById("txtIdNacionalidad").value = nacionalidad;
 		
-
-
 
 }
