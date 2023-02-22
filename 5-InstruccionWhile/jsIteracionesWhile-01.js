@@ -37,6 +37,7 @@ function mostrar()
 	let edadMenor;
 	let nombreMayor;
 	let nombreMenor;
+	let mensaje;
 
 	//inicializamos
 	respuesta = "si";
@@ -77,7 +78,9 @@ function mostrar()
 	}
 	 alert("Entonces no ingrese otro numero");
 
-	 document.write("La persona mas vieja es" + nombreMayor + "y la persona mas joven es" + nombreMenor);
+	 mensaje = "La persona mas vieja es" + nombreMayor + "con la edad de" + edadMayor;
+	 mensaje += "La persona mas joven es" + nombreMenor + "con la edad de" + edadMenor;
+	 document.write(mensaje);
 		
 
 
